@@ -1,62 +1,175 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ENCUESTAS-DDS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema web completo para la creación, gestión y análisis de encuestas, desarrollado con Laravel 11 y Tailwind CSS.
 
-## About Laravel
+## Características
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Registro y autenticación de usuarios
+- Gestión de empresas
+- Creación de encuestas personalizadas
+- Múltiples tipos de preguntas (opción múltiple, texto libre)
+- Sistema de respuestas públicas
+- Reportes y análisis de resultados
+- Panel de administración intuitivo
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requisitos Previos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Antes de instalar el proyecto, asegúrate de tener instalado:
 
-## Learning Laravel
+- **PHP >= 8.2** con las siguientes extensiones:
+  - OpenSSL
+  - PDO
+  - Mbstring
+  - Tokenizer
+  - XML
+  - Ctype
+  - JSON
+  - BCMath
+  - SQLite (para la base de datos)
+- **Composer** (Gestor de dependencias de PHP)
+- **Node.js >= 18** y **npm** (Para compilar assets frontend)
+- **Git** (Para clonar el repositorio)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Instalación
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Sigue estos pasos para configurar el proyecto en tu máquina local:
 
-## Laravel Sponsors
+### 1. Clonar el repositorio
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+git clone https://github.com/SANDEV23/ENCUESTAS-DDS.git
+cd ENCUESTAS-DSS
+```
 
-### Premium Partners
+### 2. Instalar dependencias de PHP
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+composer install
+```
 
-## Contributing
+### 3. Configurar el archivo de entorno
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Copia el archivo de ejemplo y genera la clave de aplicación:
 
-## Code of Conduct
+```bash
+# En Windows (CMD)
+copy .env.example .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# En Windows (PowerShell) o Linux/Mac
+cp .env.example .env
 
-## Security Vulnerabilities
+# Generar clave de aplicación
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Configurar la base de datos
 
-## License
+El proyecto está configurado para usar SQLite por defecto. Crea el archivo de base de datos:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# SISTEMA_DE_ENCUESTAS
-# SISTEMA_DE_ENCUESTAS
-# SISTEMA_DE_ENCUESTAS
+```bash
+# En Windows (CMD)
+type nul > database\database.sqlite
+
+# En Windows (PowerShell)
+New-Item database\database.sqlite
+
+# En Linux/Mac
+touch database/database.sqlite
+```
+
+**Nota:** Si prefieres usar MySQL o PostgreSQL, edita el archivo `.env` y configura las credenciales correspondientes.
+
+### 5. Ejecutar las migraciones
+
+Crea las tablas de la base de datos:
+
+```bash
+php artisan migrate
+```
+
+### 6. Instalar dependencias de Node.js
+
+```bash
+npm install
+```
+
+### 7. Compilar los assets frontend
+
+```bash
+# Para desarrollo (con hot-reload)
+npm run dev
+
+# Para producción
+npm run build
+```
+
+### 8. Iniciar el servidor de desarrollo
+
+En una nueva terminal, ejecuta:
+
+```bash
+php artisan serve
+```
+
+El sitio estará disponible en: `http://localhost:8000`
+
+## Uso
+
+### Primer acceso
+
+1. Abre tu navegador en `http://localhost:8000`
+2. Haz clic en "Registrar Empresa" si representas una organización
+3. O crea una cuenta de usuario directamente en "Crear Cuenta"
+4. Inicia sesión con tus credenciales
+
+### Crear una encuesta
+
+1. Desde el dashboard, ve a "Encuestas"
+2. Haz clic en "Nueva Encuesta"
+3. Completa los datos básicos
+4. Agrega preguntas de diferentes tipos
+5. Publica la encuesta para empezar a recibir respuestas
+
+### Compartir encuestas
+
+Las encuestas generan un enlace público que puedes compartir con los participantes sin que necesiten crear una cuenta.
+
+## Estructura del Proyecto
+
+```
+SISTEMA_DE_ENCUESTAS/
+├── app/
+│   ├── Http/Controllers/    # Controladores
+│   ├── Models/              # Modelos Eloquent
+│   └── ...
+├── database/
+│   ├── migrations/          # Migraciones de base de datos
+│   └── database.sqlite      # Base de datos SQLite
+├── resources/
+│   ├── views/              # Vistas Blade
+│   └── css/                # Estilos
+├── routes/
+│   └── web.php             # Rutas de la aplicación
+├── public/                 # Archivos públicos
+└── ...
+```
+
+## Scripts Disponibles
+
+```bash
+# Desarrollo
+npm run dev              # Servidor de desarrollo con hot-reload
+php artisan serve        # Servidor PHP en localhost:8000
+
+# Producción
+npm run build           # Compilar assets para producción
+
+# Base de datos
+php artisan migrate             # Ejecutar migraciones
+php artisan migrate:fresh       # Resetear base de datos y migrar
+php artisan migrate:status      # Ver estado de migraciones
+
+# Caché y optimización
+php artisan cache:clear         # Limpiar caché
+php artisan config:clear        # Limpiar caché de configuración
+php artisan route:c
